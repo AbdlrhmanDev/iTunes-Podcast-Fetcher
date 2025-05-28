@@ -36,15 +36,15 @@ app.use(express.json());
  */
 const connectDatabase = async () => {
   try {
-    console.log('🔄 Connecting to MongoDB...');
+    console.log(' Connecting to MongoDB...');
     await mongoose.connect(config.mongoUri, config.mongooseOptions);
     
-    console.log('✅ MongoDB Connected Successfully!');
-    console.log(`📊 Database: ${mongoose.connection.name}`);
-    console.log(`🔌 Host: ${mongoose.connection.host}`);
-    console.log(`🔢 Port: ${mongoose.connection.port}`);
+    console.log(' MongoDB Connected Successfully!');
+    console.log(` Database: ${mongoose.connection.name}`);
+    console.log(` Host: ${mongoose.connection.host}`);
+    console.log(` Port: ${mongoose.connection.port}`);
   } catch (err) {
-    console.error('❌ MongoDB Connection Error:', {
+    console.error(' MongoDB Connection Error:', {
       name: err.name,
       message: err.message
     });
@@ -57,11 +57,11 @@ const connectDatabase = async () => {
  */
 const setupDatabaseEventHandlers = () => {
   mongoose.connection.on('error', (err) => {
-    console.error('❌ MongoDB connection error:', err);
+    console.error('MongoDB connection error:', err);
   });
 
   mongoose.connection.on('disconnected', () => {
-    console.log('⚠️ MongoDB disconnected');
+    console.log(' MongoDB disconnected');
   });
 };
 
@@ -127,20 +127,20 @@ const startServer = async () => {
 
     // Setup routes
     app.get('/', (req, res) => {
-      res.json({ status: 'ok', message: '🎧 Podcast API is working!' });
+      res.json({ status: 'ok', message: ' Podcast API is working!' });
     });
     app.use('/search', searchRoutes);
     app.use('/trending', trendingRoutes);
 
     // Start server
     const server = app.listen(config.port, () => {
-      console.log(`🚀 Server running at http://localhost:${config.port}`);
+      console.log(` Server running at http://localhost:${config.port}`);
     });
 
     // Handle server errors
     server.on('error', async (error) => {
       if (error.code === 'EADDRINUSE') {
-        console.error(`⚠️ Port ${config.port} is already in use. Attempting to resolve...`);
+        console.error(`⚠ Port ${config.port} is already in use. Attempting to resolve...`);
         try {
           await handlePortConflict(config.port);
           startServer(); // Restart server after killing conflicting process
