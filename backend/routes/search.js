@@ -24,11 +24,11 @@ router.get('/', async (req, res) => {
       return res.status(404).json({ error: 'No podcast results found', term });
     }
 
-    console.log(`📥 Found ${data.results.length} podcasts from iTunes API`);
+    console.log(` Found ${data.results.length} podcasts from iTunes API`);
 
     const savedPodcasts = await Promise.all(
       data.results.map(async (podcast) => {
-        console.log(`🔄 Processing podcast: ${podcast.collectionName}`);
+        console.log(` Processing podcast: ${podcast.collectionName}`);
         
         const podcastData = {
           wrapperType: podcast.wrapperType,
@@ -67,7 +67,7 @@ router.get('/', async (req, res) => {
         };
 
         try {
-          console.log(`💾 Attempting to save podcast: ${podcast.collectionName} (ID: ${podcast.collectionId})`);
+          console.log(` Attempting to save podcast: ${podcast.collectionName} (ID: ${podcast.collectionId})`);
           const saved = await Podcast.findOneAndUpdate(
             { collectionId: podcast.collectionId },
             podcastData,
@@ -77,16 +77,16 @@ router.get('/', async (req, res) => {
               setDefaultsOnInsert: true
             }
           );
-          console.log(`✅ Successfully saved podcast: ${podcast.collectionName}`);
+          console.log(` Successfully saved podcast: ${podcast.collectionName}`);
           return saved;
         } catch (saveError) {
-          console.error(`❌ Error saving podcast ${podcast.collectionName}:`, saveError);
+          console.error(` Error saving podcast ${podcast.collectionName}:`, saveError);
           throw saveError;
         }
       })
     );
 
-    console.log(`📊 Successfully saved ${savedPodcasts.length} podcasts to MongoDB`);
+    console.log(` Successfully saved ${savedPodcasts.length} podcasts to MongoDB`);
 
     res.json({
       count: savedPodcasts.length,
@@ -95,7 +95,7 @@ router.get('/', async (req, res) => {
     });
 
   } catch (error) {
-    console.error('❌ Search error:', error);
+    console.error(' Search error:', error);
 
     if (error.name === 'MongoError') {
       return res.status(500).json({ error: 'Database error', details: error.message });
