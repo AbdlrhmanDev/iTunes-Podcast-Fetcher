@@ -1,6 +1,10 @@
 # iTunes Podcast Fetcher
 
+<<<<<<< HEAD
 A modern web application that allows users to discover, search, and explore podcasts from the iTunes API. Built with the MERN stack (MongoDB, Express.js, React, Node.js) and styled with Tailwind CSS.
+=======
+A modern web application that allows users to discover, search, and explore podcasts from the iTunes API. Built with the MERN stack (MongoDB, Express.js, Next, Node.js) and styled with Tailwind CSS.
+>>>>>>> 538585f60ffa5094ef8cd920f5536bb76c221ca3
 
 ![iTunes Podcast Fetcher Screenshot](screenshot.png)
 
@@ -9,7 +13,10 @@ A modern web application that allows users to discover, search, and explore podc
 - 🎙️ **Trending Podcasts**: Discover the most popular podcasts across all genres
 - 🎧 **Trending Episodes**: Browse trending episodes from various podcasts
 - 🔍 **Smart Search**: Search for podcasts by name, artist, or genre
+<<<<<<< HEAD
 - 🎨 **Genre Browsing**: Explore podcasts by category with a beautiful genre grid
+=======
+>>>>>>> 538585f60ffa5094ef8cd920f5536bb76c221ca3
 - 📱 **Responsive Design**: Fully responsive UI that works on desktop and mobile
 - 🌙 **Dark Mode**: Modern dark theme for comfortable viewing
 - ⚡ **Real-time Updates**: Live data from the iTunes API
@@ -56,6 +63,7 @@ Before you begin, ensure you have the following installed:
    npm install
    ```
 
+<<<<<<< HEAD
 3. **Environment Setup**
 
    Create a `.env` file in the backend directory:
@@ -66,6 +74,11 @@ Before you begin, ensure you have the following installed:
    ```
 
 4. **Start the development servers**
+=======
+
+
+3. **Start the development servers**
+>>>>>>> 538585f60ffa5094ef8cd920f5536bb76c221ca3
 
    In the backend directory:
    ```bash
@@ -110,9 +123,13 @@ The backend provides the following endpoints:
 
 - `GET /`: Health check endpoint
 - `GET /trending`: Get trending podcasts
+<<<<<<< HEAD
 - `GET /episodes`: Get trending episodes
 - `GET /search?term=...`: Search podcasts
 - `GET /genres`: Get available podcast genres
+=======
+
+>>>>>>> 538585f60ffa5094ef8cd920f5536bb76c221ca3
 
 ## Contributing
 
@@ -122,13 +139,21 @@ The backend provides the following endpoints:
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
+<<<<<<< HEAD
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+=======
+
+>>>>>>> 538585f60ffa5094ef8cd920f5536bb76c221ca3
 
 ## Acknowledgments
 
 - [iTunes Search API](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/index.html) for providing podcast data
 - [Shadcn/ui](https://ui.shadcn.com/) for the beautiful UI components
 - [Lucide Icons](https://lucide.dev/) for the icon set
+<<<<<<< HEAD
 - [Tailwind CSS](https://tailwindcss.com/) for the styling framework 
+=======
+- [Tailwind CSS](https://tailwindcss.com/) for the styling framework
+>>>>>>> 538585f60ffa5094ef8cd920f5536bb76c221ca3
