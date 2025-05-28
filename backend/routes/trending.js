@@ -17,18 +17,18 @@ router.get('/', async (req, res) => {
     }
 
     const data = await response.json();
-    console.log('📥 Received response from iTunes API');
+    console.log(' Received response from iTunes API');
     
     // Check if we have valid data
     if (!data.feed || !data.feed.entry || !Array.isArray(data.feed.entry)) {
-      console.error('❌ Invalid response format from iTunes API:', data);
+      console.error(' Invalid response format from iTunes API:', data);
       return res.status(404).json({ 
         error: 'No trending podcasts found',
         details: 'Invalid response format from iTunes API'
       });
     }
 
-    console.log(`📊 Found ${data.feed.entry.length} trending podcasts`);
+    console.log(` Found ${data.feed.entry.length} trending podcasts`);
 
     // Process and store each podcast
     const savedPodcasts = await Promise.all(
@@ -47,7 +47,7 @@ router.get('/', async (req, res) => {
             releaseDate: podcast['im:releaseDate']?.label || new Date().toISOString()
           };
 
-          console.log(`🔄 Processing podcast: ${podcastData.collectionName}`);
+          console.log(` Processing podcast: ${podcastData.collectionName}`);
 
           // Update if exists, insert if not (upsert)
           const savedPodcast = await Podcast.findOneAndUpdate(
@@ -60,10 +60,10 @@ router.get('/', async (req, res) => {
             }
           );
 
-          console.log(`✅ Saved podcast: ${podcastData.collectionName}`);
+          console.log(` Saved podcast: ${podcastData.collectionName}`);
           return savedPodcast;
         } catch (podcastError) {
-          console.error('❌ Error processing podcast:', podcastError);
+          console.error(' Error processing podcast:', podcastError);
           // Return a minimal valid podcast object to prevent the entire request from failing
           return {
             collectionId: String(Math.random()),
@@ -94,7 +94,7 @@ router.get('/', async (req, res) => {
     });
 
   } catch (error) {
-    console.error('❌ Trending podcasts error:', error);
+    console.error(' Trending podcasts error:', error);
     
     if (error.name === 'MongoError') {
       return res.status(500).json({ 
